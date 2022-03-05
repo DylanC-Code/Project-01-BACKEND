@@ -4,8 +4,9 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 
-//^ Require des differentes routes
-const stuffRoutesss = require("./routes/stuff");
+//^ Appel des differentes routes
+const stuffRoutes = require("./routes/stuff");
+const userRoute = require("./routes/user");
 
 //! Permet de parser le body de la request
 app.use(express.json());
@@ -23,6 +24,7 @@ app.use(cors(corsOptions), (req, res, next) => {
 });
 
 //^^ Gestion des routes
-app.use("/api/stuff", stuffRoutesss);
+app.use("/api/stuff", stuffRoutes);
+app.use("/api/auth", userRoute);
 
 module.exports = app;
