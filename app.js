@@ -1,6 +1,7 @@
 require("./config/dbConfig");
 
 const cors = require("cors");
+const path = require("path");
 const express = require("express");
 const app = express();
 
@@ -24,6 +25,8 @@ app.use(cors(corsOptions), (req, res, next) => {
 });
 
 //^^ Gestion des routes
+app.use("/images", express.static(path.join(__dirname, "images")));
+
 app.use("/api/stuff", stuffRoutes);
 app.use("/api/auth", userRoute);
 
